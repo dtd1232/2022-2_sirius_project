@@ -15,8 +15,8 @@ public class MoveCam : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        if(target.position.x>-6&&target.position.x<26.5)
-            transform.position = new Vector3(target.position.x,-2.5f,-10f);
+        if(target.position.x<21.7&&target.position.x>-1.52)
+            transform.position = new Vector3(target.position.x,0,-10f);
 
     }
 }
