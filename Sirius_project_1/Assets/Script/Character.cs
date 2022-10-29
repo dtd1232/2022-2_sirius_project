@@ -9,10 +9,11 @@ public class Character: MonoBehaviour
     float horizontal;
     float vertical;
     bool facingRight;
+    Rigidbody2D rb;
     // Start is called before the first frame update
     void Start()
     {
-
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -23,10 +24,8 @@ public class Character: MonoBehaviour
     }
     void FixedUpdate()
     {
-        Vector3 movement = new Vector3(horizontal * runSpeed, vertical * runSpeed, 0.0f);
-
-        transform.position = transform.position + movement * Time.deltaTime;
-
+        Vector3 movement = new Vector3(horizontal*runSpeed, vertical*runSpeed, 0.0f);
+        rb.velocity = movement;
         if (horizontal < 0 && !facingRight)
         {
             Flip();
