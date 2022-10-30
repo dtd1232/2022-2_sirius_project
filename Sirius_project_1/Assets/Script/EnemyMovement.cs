@@ -8,7 +8,8 @@ public class EnemyMovement : MonoBehaviour
     public float speed;
     private float distance;
     bool facingRight;
-    private float minDistance = 1.5f;
+    private float minDistance = 2f;
+    float time;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,15 +18,25 @@ public class EnemyMovement : MonoBehaviour
 
     void Update()
     {
+        
     }
     void FixedUpdate()
     {
+        
         distance = Vector3.Distance(transform.position, player.transform.position);
-        transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+        
+        if (distance < 8 && distance > minDistance) {
+            transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime); 
+        }
         if (distance < minDistance)
         {
-            //stop for 1 second
-            //attack
+            //Call the attack function once every exact second
+            if (Time.time > time)
+            {
+                time = Time.time + 1;
+                Attack();
+            }
+            //InvokeRepeating("Attack", 0f, 1f);
 
         }
         //if the player is to the left of the enemy look left
@@ -44,5 +55,9 @@ public class EnemyMovement : MonoBehaviour
     {
         facingRight = !facingRight;
         transform.Rotate(0, 180, 0);
+    }
+    void Attack()
+    {
+        Debug.Log("Enemy is attacking");
     }
 }
