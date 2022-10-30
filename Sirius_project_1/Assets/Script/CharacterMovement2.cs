@@ -7,9 +7,8 @@ public class CharacterMovement2 : MonoBehaviour
     public float Speed;
     float h;
     float v;
-    bool isHorizonMove;
     Rigidbody2D rigid;
-    
+    bool facingRight;
     void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -20,21 +19,25 @@ public class CharacterMovement2 : MonoBehaviour
     {
         h = Input.GetAxisRaw("Horizontal");
         v = Input.GetAxisRaw("Vertical");
-        bool hDown = Input.GetButtonDown("Horizontal");
-        bool vDown = Input.GetButtonDown("Vertical");
-        bool hUp = Input.GetButtonUp("Horizontal");
-        bool vUp = Input.GetButtonUp("Vertical");
-        
-        if(hDown)
-            isHorizonMove = true;
-        else if(vDown)
-            isHorizonMove = false;
-
-
     }
     void FixedUpdate()
     {
-        Vector2 moveVelocity = isHorizonMove ? new Vector2(h, 0) : new Vector2(0, v);
+        Vector3 moveVelocity = new Vector3(h, v, 0);
         rigid.velocity = moveVelocity * Speed;
+        if (h < 0 && !facingRight)
+        {
+            Flip();
+        }
+        else if (h > 0 && facingRight)
+        {
+            Flip();
+        }
+
     }
+    private void Flip()
+    {
+        facingRight = !facingRight;
+        transform.Rotate(0, 180, 0);
+    }
+
 }
