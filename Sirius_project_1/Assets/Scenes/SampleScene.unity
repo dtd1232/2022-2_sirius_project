@@ -365,8 +365,8 @@ GameObject:
   - component: {fileID: 1727204107}
   - component: {fileID: 1727204106}
   m_Layer: 0
-  m_Name: enemy
-  m_TagString: Untagged
+  m_Name: Enemy
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -855,8 +855,8 @@ GameObject:
   - component: {fileID: 1939202278}
   - component: {fileID: 1939202277}
   m_Layer: 0
-  m_Name: char
-  m_TagString: Untagged
+  m_Name: Character
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

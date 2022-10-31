@@ -2,19 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterMovement2 : MonoBehaviour
+public class CharacterMovement : MonoBehaviour
 {
     public float Speed;
     float h;
     float v;
     Rigidbody2D rigid;
     bool facingRight;
+    float time;
     void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
     }
-    // Start is called before the first frame update
-    // Update is called once per frame
     void Update()
     {
         h = Input.GetAxisRaw("Horizontal");
@@ -24,6 +23,7 @@ public class CharacterMovement2 : MonoBehaviour
     {
         Vector3 moveVelocity = new Vector3(h, v, 0);
         rigid.velocity = moveVelocity * Speed;
+
         if (h < 0 && !facingRight)
         {
             Flip();
@@ -32,8 +32,19 @@ public class CharacterMovement2 : MonoBehaviour
         {
             Flip();
         }
+        //character being hit if it is too close to the obejct with tag "Enemy"
+        if (Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Enemy").transform.position) < 2)
+        {
+            //Call the attack function once every exact second
+            if (Time.time > time)
+            {
+                time = Time.time + 1;
+                Debug.Log("Character is being hit");
+            }
+        }
 
     }
+
     private void Flip()
     {
         facingRight = !facingRight;

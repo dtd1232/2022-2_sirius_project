@@ -8,7 +8,7 @@ public class EnemyMovement : MonoBehaviour
     public float speed;
     private float distance;
     bool facingRight;
-    private float minDistance = 2f;
+    public float minDistance = 2f;
     float time;
     // Start is called before the first frame update
     void Start()
