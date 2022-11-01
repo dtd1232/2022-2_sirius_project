@@ -10,6 +10,9 @@ public class CharacterMovement : MonoBehaviour
     Rigidbody2D rigid;
     bool facingRight;
     float time;
+    [SerializeField] private GameObject enemy;
+    float minDistance;
+
     void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -18,6 +21,7 @@ public class CharacterMovement : MonoBehaviour
     {
         h = Input.GetAxisRaw("Horizontal");
         v = Input.GetAxisRaw("Vertical");
+        minDistance = enemy.GetComponent<EnemyMovement>().minDistance;
     }
     void FixedUpdate()
     {
@@ -33,7 +37,7 @@ public class CharacterMovement : MonoBehaviour
             Flip();
         }
         //character being hit if it is too close to the obejct with tag "Enemy"
-        if (Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Enemy").transform.position) < 2)
+        if (Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Enemy").transform.position) < minDistance)
         {
             //Call the attack function once every exact second
             if (Time.time > time)
