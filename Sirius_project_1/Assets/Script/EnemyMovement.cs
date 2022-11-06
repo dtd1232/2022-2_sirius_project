@@ -22,12 +22,15 @@ public class EnemyMovement : MonoBehaviour
     }
     void FixedUpdate()
     {
+        //calculate x distance between enemy and the character
         
-        distance = Vector3.Distance(transform.position, player.transform.position);
-        
+        distance = Vector2.Distance(transform.position, player.transform.position);
+
+
         if (distance < 8 && distance > minDistance) {
-            transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime); 
+            transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime); 
         }
+        
         if (distance < minDistance)
         {
             //Call the attack function once every exact second

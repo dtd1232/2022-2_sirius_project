@@ -431,7 +431,7 @@ Transform:
   m_GameObject: {fileID: 1727204103}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 23.3002, y: -1.6516, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 0}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 8
@@ -460,7 +460,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.65, y: 0.99}
+  m_Size: {x: 0.5, y: 0.5}
   m_EdgeRadius: 0
 --- !u!50 &1727204107
 Rigidbody2D:
@@ -851,10 +851,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1939202276}
-  - component: {fileID: 1939202275}
   - component: {fileID: 1939202274}
   - component: {fileID: 1939202278}
   - component: {fileID: 1939202277}
+  - component: {fileID: 1939202275}
   m_Layer: 0
   m_Name: Character
   m_TagString: Player
@@ -935,8 +935,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1939202273}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.59, y: -1.65, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalPosition: {x: -7.3582, y: -1.6029, z: 0}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.8244}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
@@ -965,7 +965,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.65, y: 0.99}
+  m_Size: {x: 0.5, y: 0.5}
   m_EdgeRadius: 0
 --- !u!50 &1939202278
 Rigidbody2D:
