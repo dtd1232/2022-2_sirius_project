@@ -11,8 +11,8 @@ public class CharacterMovement : MonoBehaviour
     bool facingRight;
     float time;
     [SerializeField] private GameObject enemy;
+    public AttackArea attacks;
     float minDistance;
-    float distanceTemp;
 
     void Awake()
     {
@@ -28,28 +28,17 @@ public class CharacterMovement : MonoBehaviour
     {
         Vector3 moveVelocity = new Vector3(h, v, 0);
         rigid.velocity = moveVelocity * Speed;
-        distanceTemp = Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Enemy").transform.position);
-
+        
         if (h < 0 && !facingRight)
         {
             Flip();
+            attacks.attackDirection = AttackArea.AttackDirection.left;
         }
         else if (h > 0 && facingRight)
         {
             Flip();
+            attacks.attackDirection = AttackArea.AttackDirection.right;
         }
-        //character being hit if it is too close to the obejct with tag "Enemy"
-        if (distanceTemp < minDistance)
-        {
-            //Call the attack function once every exact second
-            if (Time.time > time)
-            {
-                time = Time.time + 1;
-                Debug.Log("Character is being hit.");
-
-            }
-        }
-
     }
 
     private void Flip()
@@ -57,5 +46,5 @@ public class CharacterMovement : MonoBehaviour
         facingRight = !facingRight;
         transform.Rotate(0, 180, 0);
     }
-
 }
+

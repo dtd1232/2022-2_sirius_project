@@ -8,12 +8,13 @@ public class EnemyMovement : MonoBehaviour
     public float speed;
     private float distance;
     bool facingRight;
-    public float minDistance = 2f;
     float time;
+    public float minDistance = 2f;
+    [SerializeField] public float health, maxHealth = 3f;
     // Start is called before the first frame update
     void Start()
     {
-        
+        health = maxHealth;
     }
 
     void Update()
@@ -24,23 +25,11 @@ public class EnemyMovement : MonoBehaviour
     {
         //calculate x distance between enemy and the character
         
-        distance = Vector2.Distance(transform.position, player.transform.position);
+        distance = Vector3.Distance(transform.position, player.transform.position);
 
 
         if (distance < 8 && distance > minDistance) {
-            transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime); 
-        }
-        
-        if (distance < minDistance)
-        {
-            //Call the attack function once every exact second
-            if (Time.time > time)
-            {
-                time = Time.time + 1;
-                Attack();
-            }
-            //InvokeRepeating("Attack", 0f, 1f);
-
+            transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime); 
         }
         //if the player is to the left of the enemy look left
         if (player.transform.position.x < transform.position.x && facingRight)
@@ -52,6 +41,10 @@ public class EnemyMovement : MonoBehaviour
         {
             Flip();
 
+        }
+        if (health <= 0)
+        {
+            Destroy(gameObject);
         }
     }
     void Flip()
