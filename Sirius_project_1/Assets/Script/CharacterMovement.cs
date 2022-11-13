@@ -9,11 +9,10 @@ public class CharacterMovement : MonoBehaviour
     float v;
     Rigidbody2D rigid;
     bool facingRight;
-    float time;
     [SerializeField] private GameObject enemy;
-    public AttackArea attacks;
     float minDistance;
-
+    
+    public Attack attack;
     void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -28,16 +27,20 @@ public class CharacterMovement : MonoBehaviour
     {
         Vector3 moveVelocity = new Vector3(h, v, 0);
         rigid.velocity = moveVelocity * Speed;
+        //if user mouse click, attack
         
+        if (Input.GetMouseButtonDown(0))
+            attacks();
+        if (Input.GetMouseButtonUp(0))
+            EndAttacks();
+
         if (h < 0 && !facingRight)
         {
             Flip();
-            attacks.attackDirection = AttackArea.AttackDirection.left;
         }
         else if (h > 0 && facingRight)
         {
             Flip();
-            attacks.attackDirection = AttackArea.AttackDirection.right;
         }
     }
 
@@ -45,6 +48,19 @@ public class CharacterMovement : MonoBehaviour
     {
         facingRight = !facingRight;
         transform.Rotate(0, 180, 0);
+    }
+    public void attacks()
+    {
+        if (facingRight)
+            attack.AttackRight();
+        else
+        {
+            attack.AttackLeft();
+        }
+    }
+    public void EndAttacks()
+    {
+        attack.StopAttack();
     }
 }
 

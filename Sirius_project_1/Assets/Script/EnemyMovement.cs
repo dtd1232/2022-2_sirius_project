@@ -10,11 +10,10 @@ public class EnemyMovement : MonoBehaviour
     bool facingRight;
     float time;
     public float minDistance = 2f;
-    [SerializeField] public float health, maxHealth = 3f;
+    
     // Start is called before the first frame update
     void Start()
     {
-        health = maxHealth;
     }
 
     void Update()
@@ -23,20 +22,15 @@ public class EnemyMovement : MonoBehaviour
     }
     void FixedUpdate()
     {
-        //calculate x distance between enemy and the character
-        
         distance = Vector3.Distance(transform.position, player.transform.position);
-
 
         if (distance < 8 && distance > minDistance) {
             transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime); 
         }
-        //if the player is to the left of the enemy look left
         if (player.transform.position.x < transform.position.x && facingRight)
         {
             Flip();
         }
-        //if the player is to the right of the enemy look right
         else if (player.transform.position.x > transform.position.x && !facingRight)
         {
             Flip();
@@ -52,8 +46,19 @@ public class EnemyMovement : MonoBehaviour
         facingRight = !facingRight;
         transform.Rotate(0, 180, 0);
     }
-    void Attack()
-    {
-        Debug.Log("Enemy is attacking");
+    public float Health {
+        set
+        {
+            health = 3;
+            if (health <= 0)
+            {
+                Destroy(gameObject);
+            }
+        }
+        get
+        {
+            return health;
+        }
     }
+    public float health = 3;
 }

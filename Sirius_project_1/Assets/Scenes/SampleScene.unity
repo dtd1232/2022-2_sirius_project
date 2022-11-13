@@ -392,10 +392,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1301846855}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec786b95a2c69e74ebaf08b966af893d, type: 3}
+  m_Script: {fileID: 11500000, guid: 880d8b4e3264f1541a79f879b46da446, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDirection: 0
+  attackCollider: {fileID: 1301846858}
+  damage: 1
 --- !u!61 &1301846858
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -569,8 +570,7 @@ MonoBehaviour:
   player: {fileID: 1939202273}
   speed: 5
   minDistance: 2
-  health: 0
-  maxHealth: 3
+  health: 3
 --- !u!1 &1747818809
 GameObject:
   m_ObjectHideFlags: 0
@@ -949,7 +949,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 10
   enemy: {fileID: 1727204103}
-  attacks: {fileID: 1301846855}
+  attack: {fileID: 0}
 --- !u!212 &1939202275
 SpriteRenderer:
   m_ObjectHideFlags: 0
