@@ -11,7 +11,6 @@ public class Attack : MonoBehaviour
     {
         attackPosition = transform.localPosition;
     }
-    
     public void AttackRight()
     {
         print("right attack");
