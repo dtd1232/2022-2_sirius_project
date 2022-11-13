@@ -9,7 +9,7 @@ public class Attack : MonoBehaviour
     Vector2 attackPosition;
     private void Start()
     {
-        attackPosition = transform.position;
+        attackPosition = transform.localPosition;
     }
     public void AttackRight()
     {
@@ -17,12 +17,12 @@ public class Attack : MonoBehaviour
         attackCollider.enabled = true;
         transform.localPosition = attackPosition;
     }
-    public void AttackLeft()
+    /*public void AttackLeft()
     {
         print("left attack");
         attackCollider.enabled = true;
         transform.localPosition = new Vector3(attackPosition.x*-1, attackPosition.y);
-    }
+    }*/
     public void StopAttack()
     {
         attackCollider.enabled = false;
