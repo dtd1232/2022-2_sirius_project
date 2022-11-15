@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8055396570087335329}
   - component: {fileID: 6680059743371005416}
   - component: {fileID: 4911751205932757019}
+  - component: {fileID: 1090721478709603538}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -211,3 +212,25 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1090721478709603538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5785988152574939665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 806b6e445416d452b8bddbfe014203d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text_CoolTime_J: {fileID: 0}
+  image_fill_J: {fileID: 0}
+  text_CoolTime_K: {fileID: 0}
+  image_fill_K: {fileID: 0}
+  text_CoolTime_L: {fileID: 0}
+  image_fill_L: {fileID: 0}
+  animalStatus: {fileID: 0}
+  J_skill_sprite: {fileID: 0}
+  K_skill_sprite: {fileID: 0}
+  L_skill_sprite: {fileID: 0}
