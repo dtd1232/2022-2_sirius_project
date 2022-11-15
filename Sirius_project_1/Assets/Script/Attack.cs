@@ -9,7 +9,7 @@ public class Attack : MonoBehaviour
     Vector2 attackPosition;
     private void Start()
     {
-        attackPosition = transform.localPosition;
+        attackPosition = transform.position;
     }
     public void AttackRight()
     {
