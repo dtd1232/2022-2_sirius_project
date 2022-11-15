@@ -495,14 +495,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e796b0e5e4798411181b914afb1dabf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  J_animal_summonded: 0
-  K_animal_summonded: 0
-  L_animal_summonded: 0
+  J_animal_summoned: 0
+  K_animal_summoned: 0
+  L_animal_summoned: 0
   J_skill_can_use: 0
   K_skill_can_use: 0
   L_skill_can_use: 0
-  is_summonded: 0
-  summondedAnimal: {fileID: 719445806}
+  is_summoned: 0
+  summonedAnimal: {fileID: 719445806}
 --- !u!4 &676526110
 Transform:
   m_ObjectHideFlags: 0
@@ -685,7 +685,7 @@ GameObject:
   - component: {fileID: 719445807}
   - component: {fileID: 719445806}
   m_Layer: 5
-  m_Name: SummondedAnimal
+  m_Name: SummonedAnimal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

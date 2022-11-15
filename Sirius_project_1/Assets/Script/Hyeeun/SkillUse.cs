@@ -37,7 +37,7 @@ public class SkillUse : MonoBehaviour
 
     void Start()
     {
-        animalStatus.summondedAnimal.gameObject.SetActive(false);
+        animalStatus.summonedAnimal.gameObject.SetActive(false);
 
         text_CoolTime_J.gameObject.SetActive(false);
         image_fill_J.gameObject.SetActive(false);
@@ -53,13 +53,13 @@ public class SkillUse : MonoBehaviour
 
     void Update()
     {
-        if(animalStatus.is_summonded)
+        if(animalStatus.is_summoned)
         {
-            animalStatus.summondedAnimal.gameObject.SetActive(true);
+            animalStatus.summonedAnimal.gameObject.SetActive(true);
 
-            if (animalStatus.J_animal_summonded)
+            if (animalStatus.J_animal_summoned)
             {
-                animalStatus.summondedAnimal.sprite = J_skill_sprite;
+                animalStatus.summonedAnimal.sprite = J_skill_sprite;
             }
         }
         
@@ -80,7 +80,7 @@ public class SkillUse : MonoBehaviour
         }
         else{
             image_fill_J.gameObject.SetActive(true);
-            Debug.Log("J animal is summonded now, so you can't use skill J");
+            Debug.Log("J animal is summoned now, so you can't use skill J");
         }
 
 
@@ -292,7 +292,7 @@ public class SkillUse : MonoBehaviour
 //         text_CoolTime_L.gameObject.SetActive(false);
 //         image_fill_L.gameObject.SetActive(false);
 
-//         isSummonedAnimal = GameObject.Find("SummondedAnimalStatus").GetComponent<AnimalStatus>().isSummoned;
+//         isSummonedAnimal = GameObject.Find("summonedAnimalStatus").GetComponent<AnimalStatus>().isSummoned;
 
 //         Debug.Log(isSummonedAnimal);
 
@@ -301,24 +301,24 @@ public class SkillUse : MonoBehaviour
 
 //     void Update()
 //     {
-//         if (GameObject.Find("SummondedAnimalStatus").GetComponent<AnimalStatus>().J_canUse == false)
+//         if (GameObject.Find("summonedAnimalStatus").GetComponent<AnimalStatus>().J_canUse == false)
 //         {
 //             image_fill_J.gameObject.SetActive(true);
 //         }
 
-//         if (GameObject.Find("SummondedAnimalStatus").GetComponent<AnimalStatus>().isSummoned == true)
-//         // if (GameObject.Find("SummondedAnimalStauts").GetComponent<AnimalStatus>().gameObject.activeSelf == true)
+//         if (GameObject.Find("summonedAnimalStatus").GetComponent<AnimalStatus>().isSummoned == true)
+//         // if (GameObject.Find("summonedAnimalStauts").GetComponent<AnimalStatus>().gameObject.activeSelf == true)
 //         {
-//             // if (GameObject.Find("SummondedAnimalStauts").GetComponent<AnimalStatus>().J_canUse == false)
+//             // if (GameObject.Find("summonedAnimalStauts").GetComponent<AnimalStatus>().J_canUse == false)
 //             // {
 //             //     image_fill_J.gameObject.SetActive(true);
 //             // }
             
 //             // Skill J
-//             if (GameObject.Find("SummondedAnimalStauts").GetComponent<AnimalStatus>().J_canUse == true && Input.GetKeyDown(KeyCode.J))
+//             if (GameObject.Find("summonedAnimalStauts").GetComponent<AnimalStatus>().J_canUse == true && Input.GetKeyDown(KeyCode.J))
 //             {
 //                 // image_fill_J.gameObject.SetActive(true);
-//                 Debug.Log("J animal is not summonded now");
+//                 Debug.Log("J animal is not summoned now");
 //                 if (Input.GetKeyDown(KeyCode.J) && isEnded_J)
 //                 {
 //                     Debug.Log("Skill J use!");
@@ -331,9 +331,9 @@ public class SkillUse : MonoBehaviour
 
 //                 Check_CoolTime_J();
 //             }
-//             else if (GameObject.Find("SummondedAnimalStauts").GetComponent<AnimalStatus>().J_canUse == false && Input.GetKeyDown(KeyCode.J))
+//             else if (GameObject.Find("summonedAnimalStauts").GetComponent<AnimalStatus>().J_canUse == false && Input.GetKeyDown(KeyCode.J))
 //             {
-//                 Debug.Log("J animal is summonded, so J skill can't use now!");
+//                 Debug.Log("J animal is summoned, so J skill can't use now!");
 //             }
 //         }
 //         else
