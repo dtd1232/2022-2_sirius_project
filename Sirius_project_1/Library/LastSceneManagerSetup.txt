@@ -1,5 +1,9 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/Scenes/Scene.unity
+=======
+- path: Assets/Scenes/Hyeeun/HyeeunScene 1.unity
+>>>>>>> aa47b2f1b24633eee7f1526c737324114bd61fda
   isLoaded: 1
   isActive: 1
   isSubScene: 0
