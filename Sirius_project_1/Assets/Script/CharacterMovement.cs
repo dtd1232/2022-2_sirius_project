@@ -9,8 +9,10 @@ public class CharacterMovement : MonoBehaviour
     float v;
     Rigidbody2D rigid;
     bool facingRight;
-    public Attack attack;
+    [SerializeField] private GameObject enemy;
     float minDistance;
+    
+    public Attack attack;
     void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -19,12 +21,19 @@ public class CharacterMovement : MonoBehaviour
     {
         h = Input.GetAxisRaw("Horizontal");
         v = Input.GetAxisRaw("Vertical");
+        minDistance = enemy.GetComponent<EnemyMovement>().minDistance;
     }
     void FixedUpdate()
     {
         Vector3 moveVelocity = new Vector3(h, v, 0);
         rigid.velocity = moveVelocity * Speed;
+        //if user mouse click, attack
         
+        if (Input.GetMouseButtonDown(0))
+            attacks();
+        if (Input.GetMouseButtonUp(0))
+            EndAttacks();
+
         if (h < 0 && !facingRight)
         {
             Flip();
@@ -33,12 +42,6 @@ public class CharacterMovement : MonoBehaviour
         {
             Flip();
         }
-
-        if (Input.GetMouseButtonDown(0))
-            attacks();
-        if (Input.GetMouseButtonUp(0))
-            EndAttacks();
-
     }
 
     private void Flip()
@@ -48,10 +51,16 @@ public class CharacterMovement : MonoBehaviour
     }
     public void attacks()
     {
-        attack.AttackRight();
+        if (facingRight)
+            attack.AttackRight();
+        else
+        {
+            attack.AttackLeft();
+        }
     }
     public void EndAttacks()
     {
         attack.StopAttack();
     }
 }
+

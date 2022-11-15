@@ -50,17 +50,6 @@ public class SpectorMovement : MonoBehaviour
         StartCoroutine("ChangeDirection");
     }
 
-    //player attack
-    void OnTriggerEnter2D(Collider2D other){
-        if(other.gameObject.tag == "Player"){
-            Debug.Log("Player Attack");
-            health--;
-            if(health == 0){
-                Destroy(gameObject);
-            }
-        }
-    }
-
     void spectorAi(){
         distance = Vector3.Distance(transform.position, player.transform.position);
 
