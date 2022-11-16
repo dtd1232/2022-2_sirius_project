@@ -4,26 +4,13 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public float Health
+    public float Health = 1;
+    public void Update()
     {
-        set
-        {
-            health = value;
-            if (health <= 0)
-            {
-                Defeated();
-            }
-        }
-        get
-        {
-            return health;
-        }
+        if (Health <= 0) Destroy(gameObject);
     }
-    
-    public float health = 3;
-
-    void Defeated()
+    public void TakeDamage(float damage)
     {
-        Destroy(gameObject);
+        Health -= damage;
     }
 }

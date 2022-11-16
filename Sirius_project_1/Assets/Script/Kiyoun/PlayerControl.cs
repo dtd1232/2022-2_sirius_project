@@ -23,6 +23,7 @@ public class PlayerControl : MonoBehaviour
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
+
     private void FixedUpdate()
     {
         if (canMove) {

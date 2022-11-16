@@ -5,7 +5,7 @@ using UnityEngine;
 public class Attack : MonoBehaviour
 {
     public Collider2D attackCollider;
-    public float damage = 1f;
+    public float Damage = 3;
     Vector2 rightAttackOffset;
 
     private void Start()
@@ -31,15 +31,12 @@ public class Attack : MonoBehaviour
     {
         attackCollider.enabled = false;
     }
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (other.tag == "Enemy")
+        if (collision.gameObject.tag == "Enemy")
         {
-            Enemy enemy = other.GetComponent<Enemy>();
-            if (enemy != null)
-            {
-                enemy.Health-=damage;
-            }
+            collision.gameObject.GetComponent<Enemy>().TakeDamage(Damage);
         }
     }
+
 }
