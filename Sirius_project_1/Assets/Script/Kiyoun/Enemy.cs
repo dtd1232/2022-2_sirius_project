@@ -70,11 +70,7 @@ public class Enemy : MonoBehaviour
             maxhealth-=damage;
             print(maxhealth);
             if(maxhealth<=0){
-<<<<<<< HEAD
-=======
-                //disable myself
-                // Destroy(gameObject);
->>>>>>> 7254234a9b30333fe7e6527fe95634ad47d7fbbe
+
                 gameObject.SetActive(false);
             }
         }
