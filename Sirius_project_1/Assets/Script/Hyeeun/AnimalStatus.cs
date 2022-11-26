@@ -22,7 +22,7 @@ public class AnimalStatus : MonoBehaviour
     void Start()
     {
         // 플레이어 선택에 따라 바뀌는 동물 소환 여부 관리 파트
-        J_animal_summoned = false;
+        J_animal_summoned = true;
         K_animal_summoned = false;
         K_animal_summoned = false;
 
