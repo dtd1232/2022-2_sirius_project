@@ -35,7 +35,7 @@ public class Attack : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            collision.gameObject.GetComponent<Enemy>().TakeDamage(Damage);
+            //collision.gameObject.GetComponent<Enemy>().TakeDamage(Damage);
         }
     }
 
