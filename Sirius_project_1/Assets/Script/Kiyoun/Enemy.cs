@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
     Animator animator;
     Rigidbody2D rb;
     float minDistance = 2f;
+    float maxhealth=10;
 
     private float enemyMinDistance = 0.5f;
     float enemyDistance;
@@ -43,5 +44,16 @@ public class Enemy : MonoBehaviour
         animator.SetBool("isMoving", true);
         //move towards the player
        transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime); 
+    }
+    public void TakeDamage(float damage)
+    {
+        if(gameObject!=null){
+            maxhealth-=damage;
+            print(maxhealth);
+            if(maxhealth<=0){
+                //disable enemy
+                gameObject.SetActive(false);
+            }
+        }
     }
 }
