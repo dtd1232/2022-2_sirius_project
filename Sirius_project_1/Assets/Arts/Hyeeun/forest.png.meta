@@ -1,17 +1,7 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Sirius_project_1/Assets/Arts/Kiyoun/sprites/characters/Enemy2_default_50x50.png.meta
-guid: 4e13a68a061d9aa41902fea5180fed5d
-========
 guid: 28cdcae5fb3464e3ca1906fce41e3432
->>>>>>>> 389f86a221f8e4ef0382bd13d61487e4e9e982b4:Sirius_project_1/Assets/Arts/Hyeeun/KakaoTalk_Image_2022-11-26-21-24-42.png.meta
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: 4953877135160168760
-    second: Enemy2_default_50x50_0
-  - first:
-      213: -4922211235404552929
-    second: Enemy2_default_50x50_1
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -42,7 +32,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -51,7 +41,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -78,19 +68,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Standalone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -99,49 +77,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: Enemy2_default_50x50_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 1600
-        width: 1600
-        height: 1600
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 831d626f105bfb440800000000000000
-      internalID: 4953877135160168760
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Enemy2_default_50x50_1
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1600
-        height: 1600
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f15664cd5fac0bbb0800000000000000
-      internalID: -4922211235404552929
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
