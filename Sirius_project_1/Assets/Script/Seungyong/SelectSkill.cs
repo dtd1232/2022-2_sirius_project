@@ -1,4 +1,4 @@
-using System;
+/*using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -39,6 +39,7 @@ public class SelectSkill : MonoBehaviour
     {
 
     }
+*/
 /*
     // this function generates random number to determine what skills show user to select
     void RandomGenerate(){
@@ -47,6 +48,7 @@ public class SelectSkill : MonoBehaviour
         }
     }
 */
+/*
     void PauseGame(){
         Time.timeScale = 0;
     }
@@ -69,3 +71,4 @@ public class SelectSkill : MonoBehaviour
         PauseCanvas.SetActive(true);    // uncover select canvas
     }
 }
+*/
