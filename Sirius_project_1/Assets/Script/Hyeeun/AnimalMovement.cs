@@ -7,6 +7,8 @@ public class AnimalMovement : MonoBehaviour
 {
     public float speed=4;
 
+    public float Damage = 5;
+
     // private bool isMovingBack = false;
 
     public float speed_back = 0.1f;
@@ -22,17 +24,13 @@ public class AnimalMovement : MonoBehaviour
     public void Start()
     {
         enemy = GameObject.FindWithTag("Enemy");
+        // animator.SetBool("isIdle", true);
     }
-    //chase player if character is in range
+
     public void FixedUpdate()
     {
         distance = Vector3.Distance(transform.position, player.transform.position);
-
         distance_enemy = Vector3.Distance(transform.position, enemy.transform.position);
-
-        // if(distance_enemy == enemyMinDistance){
-        //         transform.position = Vector3.MoveTowards(transform.position, enemy.transform.position, -speed * 2 * Time.deltaTime);
-        //     }
 
         if (distance_enemy < 15)
         {
@@ -46,44 +44,43 @@ public class AnimalMovement : MonoBehaviour
     }
     public void ChasePlayer()
     {
-        //move towards the player
+        // animator.SetBool("isIdle", false);
+        // animator.SetBool("isMoving", true);
        transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime); 
     }
 
     public void ChaseEnemy()
     {
-        //move towards the player
+        // animator.SetBool("isIdle", false);
+        // animator.SetBool("isMoving", true);
        transform.position = Vector3.MoveTowards(transform.position, enemy.transform.position, speed * Time.deltaTime); 
     }
 
-    // void OnCollisionEnter2D(Collision2D other)
-    // {
-    //     Debug.Log("충돌!");
-    //     if(other.collider.CompareTag("Enemy"))
-    //     {
-    //         Debug.Log ("animal, enemy 서로 충돌!!");
-    //         Debug.Log (other.gameObject);
-    //     }
-    // }
-    // {
-    //     if(collision.collider.CompareTag("Enemy"))
-    //     {
-    //         Debug.Log ("animal, enemy 서로 충돌!!");
-    //         Debug.Log (collision.gameObject);
-    //     }
-    // }
-
+    // 부딪혀서 공격할 때
     void OnTriggerEnter2D (Collider2D other)
     {
-        // Debug.Log("충돌");
-        // Debug.Log (other.gameObject);
-        // Debug.Log (other.gameObject.tag);
-        // isMovingBack = true;
+        
         if (other.tag == "Enemy")
         {
             Debug.Log ("animal, enemy 서로 충돌!!");
-            // Debug.Log (other.gameObject);
-            MoveBack();
+
+            // animator.SetBool("isMoving", false);
+            // animator.SetBool("isAttack", true);
+            other.gameObject.GetComponent<Enemy>().TakeDamage(Damage);
+        }
+    }
+
+    void OnOnTriggerExit2D (Collider2D other)
+    {
+        
+        if (other.tag == "Enemy")
+        {
+            Debug.Log ("animal, enemy 서로 떨어짐");
+
+            // animator.SetBool("isMoving", true);
+            // animator.SetBool("isAttack", false);
+            other.gameObject.GetComponent<Enemy>().TakeDamage(Damage);
+            
             
         }
     }
@@ -92,14 +89,6 @@ public class AnimalMovement : MonoBehaviour
     {
         Debug.Log ("충돌해서 뒤로 이동");
         
-        // transform.Translate(new Vector3(-2, 0, 0));
-        // isMovingBack = false;
-        // if (distance_enemy == 2)
-        // {
-        //     isMovingBack = false;
-        // }
         transform.position = Vector3.MoveTowards(transform.position, enemy.transform.position, -speed * 20 * Time.deltaTime);
-        // transform.position = Vector3.MoveTowards(transform.position, pos_move, 30*speed * Time.deltaTime);
-        // transform.position = Vector3.MoveTowards(transform.position, transform.position, Time.deltaTime); 
     }
 }

@@ -12,7 +12,6 @@ public class PlayerControl : MonoBehaviour
     public ContactFilter2D movementFilter;
     public Attack simpleAttack;
     bool canMove = true;
-
     Vector2 moveInput;
     SpriteRenderer spriteRenderer;
     Rigidbody2D rb;
@@ -76,11 +75,12 @@ public class PlayerControl : MonoBehaviour
     }
     void OnFire()
     {
+
         animator.SetTrigger("Attack");
     }
     public void charAttack()
     {
-        LockMovement();
+        //LockMovement();
 
         if(spriteRenderer.flipX==true)
             simpleAttack.AttackLeft();
@@ -89,16 +89,16 @@ public class PlayerControl : MonoBehaviour
     }
     public void EndAttack()
     {
-        UnlockMovement();
+        //UnlockMovement();
         simpleAttack.StopAttack();
     }
 
-    public void LockMovement()
-    {
-        canMove = false;
-    }
-    public void UnlockMovement()
-    {
-        canMove = true;
-    }
+    // public void LockMovement()
+    // {
+    //     canMove = false;
+    // }
+    // public void UnlockMovement()
+    // {
+    //     canMove = true;
+    // }
 }
