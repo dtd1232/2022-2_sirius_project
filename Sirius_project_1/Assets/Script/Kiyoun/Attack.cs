@@ -10,7 +10,7 @@ public class Attack : MonoBehaviour
 
     private void Start()
     {
-        rightAttackOffset = transform.position;
+        rightAttackOffset = transform.localPosition;
     }
 
     public void AttackRight()
@@ -35,7 +35,8 @@ public class Attack : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            //collision.gameObject.GetComponent<Enemy>().TakeDamage(Damage);
+            //print("Hit");
+            collision.gameObject.GetComponent<Enemy>().TakeDamage(Damage);
         }
     }
 
