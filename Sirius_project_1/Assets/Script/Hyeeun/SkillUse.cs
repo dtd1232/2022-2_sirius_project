@@ -55,12 +55,12 @@ public class SkillUse : MonoBehaviour
     {
         if(animalStatus.is_summoned)
         {
-            animalStatus.summonedAnimal.gameObject.SetActive(true);
+            animalStatus.summonedAnimal.SetActive(true);
 
-            if (animalStatus.J_animal_summoned)
-            {
-                animalStatus.summonedAnimal.sprite = J_skill_sprite;
-            }
+            // if (animalStatus.J_animal_summoned)
+            // {
+            //     animalStatus.summonedAnimal.sprite = J_skill_sprite;
+            // }
         }
         
         // Skill J
@@ -80,7 +80,7 @@ public class SkillUse : MonoBehaviour
         }
         else{
             image_fill_J.gameObject.SetActive(true);
-            Debug.Log("J animal is summoned now, so you can't use skill J");
+            // Debug.Log("J animal is summoned now, so you can't use skill J");
         }
 
 

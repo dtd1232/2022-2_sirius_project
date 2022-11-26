@@ -16,7 +16,7 @@ public class AnimalStatus : MonoBehaviour
     public bool L_skill_can_use;
 
     public bool is_summoned;
-    public Image summonedAnimal;
+    public GameObject summonedAnimal;
 
     // Start is called before the first frame update
     void Start()

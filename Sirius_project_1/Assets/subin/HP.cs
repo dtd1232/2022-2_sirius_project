@@ -31,7 +31,7 @@ public class HP : MonoBehaviour
         fSliderBarTime += Time.deltaTime;
         if (fSliderBarTime >= 1)
         {
-            HPbar.value -= 1;
+            // HPbar.value -= 1;
             fSliderBarTime = 0;
         }
     }
