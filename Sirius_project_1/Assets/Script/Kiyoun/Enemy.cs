@@ -9,18 +9,32 @@ public class Enemy : MonoBehaviour
     private float distance;
     GameObject player;
     Animator animator;
+    Rigidbody2D rb;
     float minDistance = 2f;
+
+    private float enemyMinDistance = 0.5f;
+    float enemyDistance;
+    GameObject otherEnemy;
+
     public void Start(){
         animator = GetComponent<Animator>();
+        rb=GetComponent<Rigidbody2D>();
         player = GameObject.FindWithTag("Player");
+        otherEnemy=GameObject.FindWithTag("Enemy");
     }
     //chase player if character is in range
     public void FixedUpdate(){
         distance = Vector3.Distance(transform.position, player.transform.position);
+        enemyDistance=Vector3.Distance(transform.position, otherEnemy.transform.position);
+
+        if(enemyDistance<enemyMinDistance){
+            transform.position = Vector3.MoveTowards(transform.position, otherEnemy.transform.position, -speed * 2 * Time.deltaTime);
+        }
 
         if (distance < 8 && distance > minDistance) {
             ChasePlayer();
         }
+
         else animator.SetBool("isMoving", false);
     }
     public void ChasePlayer()
@@ -28,6 +42,6 @@ public class Enemy : MonoBehaviour
         //set animation to "isMoving"
         animator.SetBool("isMoving", true);
         //move towards the player
-       transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime); 
+       transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime); 
     }
 }
