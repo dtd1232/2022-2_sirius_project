@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour
     Rigidbody2D rb;
     float minDistance = 2f;
     float maxhealth=10;
+    bool facingRight;
 
     private float enemyMinDistance = 0.5f;
     float enemyDistance;
@@ -31,13 +32,25 @@ public class Enemy : MonoBehaviour
         if(enemyDistance<enemyMinDistance){
             transform.position = Vector3.MoveTowards(transform.position, otherEnemy.transform.position, -speed * 2 * Time.deltaTime);
         }
-
-        if (distance < 8 && distance > minDistance) {
-            ChasePlayer();
+        if (player.transform.position.x < transform.position.x && facingRight)
+        {
+            Flip();
         }
+        else if (player.transform.position.x > transform.position.x && !facingRight)
+        {
+            Flip();
+        }
+        if (distance < 8 && distance > minDistance)
+            ChasePlayer();
+        else 
+            animator.SetBool("isMoving", false);
 
-        else animator.SetBool("isMoving", false);
+        if(distance<=minDistance)
+            enemyAttack();
+        else
+            animator.SetBool("isAttacking", false);
     }
+
     public void ChasePlayer()
     {
         //set animation to "isMoving"
@@ -45,6 +58,12 @@ public class Enemy : MonoBehaviour
         //move towards the player
        transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime); 
     }
+
+    public void enemyAttack(){
+        print("test");
+        animator.SetBool("isAttacking", true);
+    }
+
     public void TakeDamage(float damage)
     {
         if(gameObject!=null){
@@ -55,5 +74,11 @@ public class Enemy : MonoBehaviour
                 gameObject.SetActive(false);
             }
         }
+    }
+    
+    void Flip()
+    {
+        facingRight = !facingRight;
+        transform.Rotate(0, 180, 0);
     }
 }
