@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour
     GameObject player;
     Animator animator;
     Rigidbody2D rb;
-    float minDistance = 2f;
+    float minDistance = 1f;
     float maxhealth=10;
     bool facingRight;
 
@@ -60,7 +60,7 @@ public class Enemy : MonoBehaviour
     }
 
     public void enemyAttack(){
-        print("test");
+        //print("test");
         animator.SetBool("isAttacking", true);
     }
 
@@ -70,7 +70,6 @@ public class Enemy : MonoBehaviour
             maxhealth-=damage;
             print(maxhealth);
             if(maxhealth<=0){
-                //disable enemy
                 gameObject.SetActive(false);
             }
         }

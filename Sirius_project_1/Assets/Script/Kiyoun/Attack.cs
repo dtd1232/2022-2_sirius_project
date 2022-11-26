@@ -31,6 +31,7 @@ public class Attack : MonoBehaviour
     {
         attackCollider.enabled = false;
     }
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Enemy")
