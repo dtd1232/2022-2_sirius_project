@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class AnimalMovement : MonoBehaviour
 {
-    public float speed=4;
+    public float speed=3;
 
     public float Damage = 5;
 
@@ -16,6 +16,7 @@ public class AnimalMovement : MonoBehaviour
 
     private float distance_enemy;
     public GameObject player;
+    Animator animator;
     GameObject enemy;
 
     private float enemyMinDistance = 0.5f;
@@ -24,11 +25,13 @@ public class AnimalMovement : MonoBehaviour
     public void Start()
     {
         enemy = GameObject.FindWithTag("Enemy");
-        // animator.SetBool("isIdle", true);
+        animator = GetComponent<Animator>();
+        
     }
 
     public void FixedUpdate()
     {
+        //animator.SetBool("isIdle", true);
         distance = Vector3.Distance(transform.position, player.transform.position);
         distance_enemy = Vector3.Distance(transform.position, enemy.transform.position);
 
@@ -36,23 +39,21 @@ public class AnimalMovement : MonoBehaviour
         {
             ChaseEnemy();
         }
-        
-
         else if (distance < 8 && distance > minDistance) {
             ChasePlayer();
         }
     }
     public void ChasePlayer()
     {
-        // animator.SetBool("isIdle", false);
-        // animator.SetBool("isMoving", true);
+        //animator.SetBool("isIdle", false);
+        animator.SetBool("isMoving", true);
        transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime); 
     }
 
     public void ChaseEnemy()
     {
-        // animator.SetBool("isIdle", false);
-        // animator.SetBool("isMoving", true);
+        //animator.SetBool("isIdle", false);
+        animator.SetBool("isMoving", true);
        transform.position = Vector3.MoveTowards(transform.position, enemy.transform.position, speed * Time.deltaTime); 
     }
 
@@ -63,11 +64,11 @@ public class AnimalMovement : MonoBehaviour
         if (other.tag == "Enemy")
         {
             Debug.Log ("animal, enemy 서로 충돌!!");
-
-            // animator.SetBool("isMoving", false);
-            // animator.SetBool("isAttack", true);
+            //animator.SetBool("isMoving", false);
+            animator.SetBool("isAttack", true);
             other.gameObject.GetComponent<Enemy>().TakeDamage(Damage);
         }
+        //animator.SetBool("isAttack", false);
     }
 
     void OnOnTriggerExit2D (Collider2D other)
@@ -77,8 +78,8 @@ public class AnimalMovement : MonoBehaviour
         {
             Debug.Log ("animal, enemy 서로 떨어짐");
 
-            // animator.SetBool("isMoving", true);
-            // animator.SetBool("isAttack", false);
+            //animator.SetBool("isMoving", true);
+            animator.SetBool("isAttack", false);
             other.gameObject.GetComponent<Enemy>().TakeDamage(Damage);
             
             
