@@ -71,7 +71,7 @@ public class AnimalMovement : MonoBehaviour
         //animator.SetBool("isAttack", false);
     }
 
-    void OnOnTriggerExit2D (Collider2D other)
+    void OnTriggerExit2D (Collider2D other)
     {
         
         if (other.tag == "Enemy")

@@ -9,6 +9,12 @@ EditorBuildSettings:
     path: 
     guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scenes/Kiyoun/SampleScene 1.unity
-    guid: e2caa9c3583084269bf51b54c7e95998
+    path: Assets/Scenes/Seungyong/StartScene.unity
+    guid: 3bc81ca90880e4a3eb210f38e45f3193
+  - enabled: 1
+    path: Assets/Scenes/Kiyoun/SampleScene 3.unity
+    guid: 13c6b0951b21a444eab52e66e7821b4a
+  - enabled: 1
+    path: Assets/Scenes/Seungyong/EndScene.unity
+    guid: 7a36252a3a74044ea9d539640e7d38fc
   m_configObjects: {}

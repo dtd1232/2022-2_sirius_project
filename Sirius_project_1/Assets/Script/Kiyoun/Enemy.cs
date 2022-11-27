@@ -24,6 +24,7 @@ public class Enemy : MonoBehaviour
         rb=GetComponent<Rigidbody2D>();
         player = GameObject.FindWithTag("Player");
         otherEnemy=GameObject.FindWithTag("Enemy");
+        gameManager = FindObjectOfType<GameManager>();
     }
     //chase player if character is in range
     public void FixedUpdate(){
@@ -72,6 +73,7 @@ public class Enemy : MonoBehaviour
             print(maxhealth);
             if(maxhealth<=0){
                 gameObject.SetActive(false);
+                gameManager.numOfEnemy--;
                 gameManager.EnemyDead();
             }
         }
