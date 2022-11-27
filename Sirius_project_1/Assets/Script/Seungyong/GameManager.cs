@@ -1,4 +1,5 @@
-/*using System.Threading;
+using System.Diagnostics;
+using System.Threading;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    private SelectSkill selectedSkill;
+    private SelectSkill selectSkill;
     // to get currnnt stage, for using when multiple stages
     // private int currentStage;
 
@@ -17,11 +18,7 @@ public class GameManager : MonoBehaviour
     private bool isPause;
 
     // number of enemy
-    private int numOfEnemy;
-
-    // to save what skill user get
-    private bool isWildboarPassive;
-    private bool isWildboarSkill;
+    public int numOfEnemy = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -29,8 +26,7 @@ public class GameManager : MonoBehaviour
         // currentStage = 0;
         health = 100.0f;
         isPause = false;
-        isWildboarPassive = false;
-        isWildboarSkill = false;
+        numOfEnemy = 3;
     }
 
     // Update is called once per frame
@@ -46,6 +42,11 @@ public class GameManager : MonoBehaviour
         #else
             Application.Quit();
         #endif
+    }
+
+    public void EnemyDead(){
+        //numOfEnemy--;
+        print("tester"+numOfEnemy);
     }
 
     // if click start button, start game
@@ -72,17 +73,14 @@ public class GameManager : MonoBehaviour
     }
 
     public void ClearStage(){
-        if(health > 0.0f){
+        //if(health > 0.0f){
             if(numOfEnemy == 0){
                 if(SceneManager.GetActiveScene().buildIndex == 1){  // if current stage is 1 and no remaining enemy
                     SceneManager.LoadScene(2);  // move to end scene
                 }
             }
-        }else{  // if player's health is 0, 
-            SceneManager.LoadScene(2);  // move to end scene
-        }
+        // }else{  // if player's health is 0, 
+        //     SceneManager.LoadScene(2);  // move to end scene
+        // }
     }
-
-    
 }
-*/

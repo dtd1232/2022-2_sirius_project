@@ -17,12 +17,14 @@ public class Enemy : MonoBehaviour
     private float enemyMinDistance = 0.5f;
     float enemyDistance;
     GameObject otherEnemy;
+    GameManager gameManager;
 
     public void Start(){
         animator = GetComponent<Animator>();
         rb=GetComponent<Rigidbody2D>();
         player = GameObject.FindWithTag("Player");
         otherEnemy=GameObject.FindWithTag("Enemy");
+        gameManager = FindObjectOfType<GameManager>();
     }
     //chase player if character is in range
     public void FixedUpdate(){
@@ -70,7 +72,9 @@ public class Enemy : MonoBehaviour
             maxhealth-=damage;
             print(maxhealth);
             if(maxhealth<=0){
-                Destory(gameObject);
+                gameObject.SetActive(false);
+                gameManager.numOfEnemy--;
+                gameManager.EnemyDead();
             }
         }
     }
