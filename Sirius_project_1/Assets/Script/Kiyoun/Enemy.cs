@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour
     private float enemyMinDistance = 0.5f;
     float enemyDistance;
     GameObject otherEnemy;
+    GameManager gameManager;
 
     public void Start(){
         animator = GetComponent<Animator>();
@@ -71,6 +72,7 @@ public class Enemy : MonoBehaviour
             print(maxhealth);
             if(maxhealth<=0){
                 gameObject.SetActive(false);
+                gameManager.EnemyDead();
             }
         }
     }
