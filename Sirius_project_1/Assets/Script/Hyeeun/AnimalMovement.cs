@@ -19,6 +19,8 @@ public class AnimalMovement : MonoBehaviour
     Animator animator;
     GameObject enemy;
 
+    bool facingRight = true;
+
     private float enemyMinDistance = 0.5f;
 
     float minDistance = 2f;
@@ -31,27 +33,57 @@ public class AnimalMovement : MonoBehaviour
 
     public void FixedUpdate()
     {
+        Debug.Log (distance_enemy);
         //animator.SetBool("isIdle", true);
         distance = Vector3.Distance(transform.position, player.transform.position);
         distance_enemy = Vector3.Distance(transform.position, enemy.transform.position);
 
-        if (distance_enemy < 15)
+        if (distance_enemy < 15 && distance_enemy >= 1.2)
         {
-            ChaseEnemy();
+            if (enemy.transform.position.x < transform.position.x && facingRight)
+            {
+                Flip();
+            }
+            else if (enemy.transform.position.x > transform.position.x && !facingRight)
+            {
+                Flip();
+            }
+           
+            ChaseEnemy();            
         }
-        else if (distance < 8 && distance > minDistance) {
-            ChasePlayer();
+
+        else if (distance_enemy >= 15 || distance_enemy < 0.05)
+        {
+            if (distance < 8 && distance > minDistance) 
+            {
+                if (player.transform.position.x < transform.position.x && facingRight)
+                {
+                    Debug.Log (facingRight);
+                    Debug.Log ("지금!!");
+                    Flip();
+                }
+                else if (player.transform.position.x > transform.position.x && !facingRight)
+                {
+                    Debug.Log (facingRight);
+                    Flip();
+                }
+                ChasePlayer();
+            }
         }
+        
     }
     public void ChasePlayer()
     {
+        Debug.Log ("플레이어 따라가는 중");
         //animator.SetBool("isIdle", false);
         animator.SetBool("isMoving", true);
+        
        transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime); 
     }
 
     public void ChaseEnemy()
     {
+        Debug.Log ("적 따라가는 중");
         //animator.SetBool("isIdle", false);
         animator.SetBool("isMoving", true);
        transform.position = Vector3.MoveTowards(transform.position, enemy.transform.position, speed * Time.deltaTime); 
@@ -71,16 +103,15 @@ public class AnimalMovement : MonoBehaviour
         //animator.SetBool("isAttack", false);
     }
 
-    void OnOnTriggerExit2D (Collider2D other)
+    void OnTriggerExit2D (Collider2D other)
     {
-        
+        Debug.Log ("떨어짐");
         if (other.tag == "Enemy")
         {
             Debug.Log ("animal, enemy 서로 떨어짐");
 
             //animator.SetBool("isMoving", true);
             animator.SetBool("isAttack", false);
-            other.gameObject.GetComponent<Enemy>().TakeDamage(Damage);
             
             
         }
@@ -91,5 +122,11 @@ public class AnimalMovement : MonoBehaviour
         Debug.Log ("충돌해서 뒤로 이동");
         
         transform.position = Vector3.MoveTowards(transform.position, enemy.transform.position, -speed * 20 * Time.deltaTime);
+    }
+
+    void Flip()
+    {
+        facingRight = !facingRight;
+        transform.Rotate(0, 180, 0);
     }
 }
