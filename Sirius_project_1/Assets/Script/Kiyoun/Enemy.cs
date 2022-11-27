@@ -72,7 +72,8 @@ public class Enemy : MonoBehaviour
             maxhealth-=damage;
             print(maxhealth);
             if(maxhealth<=0){
-                gameObject.SetActive(false);
+                //gameObject.SetActive(false);
+                Destroy(gameObject);
                 gameManager.numOfEnemy--;
                 gameManager.EnemyDead();
             }
