@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     private bool isPause;
 
     // number of enemy
-    private int numOfEnemy = 0;
+    public int numOfEnemy = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -45,8 +45,8 @@ public class GameManager : MonoBehaviour
     }
 
     public void EnemyDead(){
-        numOfEnemy--;
-        print(numOfEnemy);
+        //numOfEnemy--;
+        print("tester"+numOfEnemy);
     }
 
     // if click start button, start game
@@ -73,16 +73,14 @@ public class GameManager : MonoBehaviour
     }
 
     public void ClearStage(){
-        if(health > 0.0f){
+        //if(health > 0.0f){
             if(numOfEnemy == 0){
                 if(SceneManager.GetActiveScene().buildIndex == 1){  // if current stage is 1 and no remaining enemy
                     SceneManager.LoadScene(2);  // move to end scene
                 }
             }
-        }else{  // if player's health is 0, 
-            SceneManager.LoadScene(2);  // move to end scene
-        }
+        // }else{  // if player's health is 0, 
+        //     SceneManager.LoadScene(2);  // move to end scene
+        // }
     }
-
-    
 }
