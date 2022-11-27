@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour
 
     public void OnClickEndButton(){
         // Call ExitGame function after 5sec
-        Invoke("ExitGame", 5);
+        Invoke("ExitGame", 1);
     }
 
     public void OnClickRestartButton(){
